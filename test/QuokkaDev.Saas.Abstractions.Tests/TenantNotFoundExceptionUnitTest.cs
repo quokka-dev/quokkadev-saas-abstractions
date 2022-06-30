@@ -2,7 +2,6 @@
 using QuokkaDev.Saas.Abstractions.Exceptions;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace QuokkaDev.Saas.Abstractions.Tests
@@ -42,9 +41,8 @@ namespace QuokkaDev.Saas.Abstractions.Tests
             ex3.InnerException.Should().BeOfType<System.ArgumentException>();
         }
 
-
         [Fact(DisplayName = "Serialization works as expected")]
-        public async Task Serialization_Works_As_Expected()
+        public void Serialization_Works_As_Expected()
         {
             // Arrange
             TenantNotFoundException ex;
@@ -71,13 +69,19 @@ namespace QuokkaDev.Saas.Abstractions.Tests
 
             using MemoryStream ms = new();
 
-            BinaryFormatter formatter = new BinaryFormatter();
-            formatter.Serialize(ms, ex);
+            // BinaryFormatter is used because JsonSerializer and XmlSerializer cannot serialize exception properly
 
-            await ms.FlushAsync();
+            BinaryFormatter formatter = new();
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
+            formatter.Serialize(ms, ex);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
+
+            ms.Flush();
             ms.Seek(0, SeekOrigin.Begin);
 
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
             TenantNotFoundException? deserializedException = (TenantNotFoundException?)formatter.Deserialize(ms);
+#pragma warning restore SYSLIB0011 // Type or member is obsolete
 
             // Assert            
             true.Should().BeTrue();
