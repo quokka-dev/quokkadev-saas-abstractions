@@ -91,9 +91,10 @@ jobs:
           set_check_status_from_test_outcome: true
     
       - name: Copy Coverage To Predictable Location
-        run: cp coverage/*/coverage.cobertura.xml coverage/coverage.cobertura.xml
-             cp coverage/*/coverage.opencover.xml coverage/coverage.opencover.xml
-                     
+        run: |
+          cp coverage/*/coverage.cobertura.xml coverage/coverage.cobertura.xml
+          cp coverage/*/coverage.opencover.xml coverage/coverage.opencover.xml
+
       - name: Generate QuokkaDev.Saas.Abstractions Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.0.2      
         with:
