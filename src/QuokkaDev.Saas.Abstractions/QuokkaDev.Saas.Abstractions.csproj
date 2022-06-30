@@ -6,12 +6,12 @@
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageId>$(AssemblyName)</PackageId>
-		<Authors>QuokkaDev - </Authors>
+		<Authors>QuokkaDev - Fabio Cometti</Authors>
 		<Company>QuokkaDev</Company>
 		<Description>Abstractions for manage SAAS applications</Description>
-		<PackageProjectUrl>https://github.com/orgs/quokka-dev/quokkadev-saas-abstractions</PackageProjectUrl>
+		<PackageProjectUrl>https://github.com/quokka-dev/quokkadev-saas-abstractions</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<RepositoryUrl>https://github.com/orgs/quokka-dev/quokkadev-saas-abstractions</RepositoryUrl>
+		<RepositoryUrl>https://github.com/quokka-dev/quokkadev-saas-abstractions</RepositoryUrl>
 		<PackageTags>library;c#;</PackageTags>		
 		<Copyright>QuokkaDev © 2022</Copyright>			
 		<PackageIcon>icon.png</PackageIcon>		
