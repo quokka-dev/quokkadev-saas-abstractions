@@ -91,7 +91,7 @@ jobs:
       - name: Pack QuokkaDev.Saas.Abstractions
         run: dotnet pack src/QuokkaDev.Saas.Abstractions/QuokkaDev.Saas.Abstractions.csproj -c Release /p:Version=${{ steps.calculate_version.outputs.version }} 
       - name: Publish to GitHub package QuokkaDev.Saas.Abstractions 
-        run: dotnet nuget push src/QuokkaDev.Saas.Abstractions/bin/Release/*.nupkg ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json  
+        run: dotnet nuget push src/QuokkaDev.Saas.Abstractions/bin/Release/*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json  
 
       # Tag the version on main
 
